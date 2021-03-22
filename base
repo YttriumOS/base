@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PI_FA(){
+set -o pipefail
+}
+
+MAIN_PK() {
+sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
+sudo xbps-install xfce4 xorg-minimal xorg-fonts torbrowser-launcher
+}
+
+SRT_SEV(){
+sudo ln -s /etc/sv/dbus /var/service
+sudo reboot
+}
+
+#runfunctions
+
+PI_FA 
+MAIN_PK || MAIN_PK 
+SRT_SEV
