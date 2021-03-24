@@ -6,11 +6,12 @@ set -o pipefail
 
 MAIN_PK() {
 sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
-sudo xbps-install xfce4 xorg-minimal xorg-fonts gvfs papirus-icon-theme torbrowser-launcher
+sudo xbps-install xfce4 xorg-minimal xorg-fonts gvfs papirus-icon-theme arc-theme evince celluloid torbrowser-launcher
 }
 
 SRT_SEV(){
 sudo ln -s /etc/sv/dbus /var/service
+sudo ln -s /etc/sv/elogind /var/service
 sudo reboot
 }
 
