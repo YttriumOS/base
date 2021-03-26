@@ -6,7 +6,7 @@ set -o pipefail
 
 MAIN_PK() {
 sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
-sudo xbps-install xfce4 xorg-minimal xorg-fonts gvfs papirus-icon-theme arc-theme evince celluloid torbrowser-launcher
+sudo xbps-install xfce4 xfce4-whiskermenu-plugin xorg-minimal xorg-fonts gvfs papirus-icon-theme arc-theme evince celluloid torbrowser-launcher
 }
 
 SRT_SEV(){
