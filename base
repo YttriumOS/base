@@ -14,6 +14,8 @@ sudo ln -s /etc/sv/dbus /var/service
 sudo ln -s /etc/sv/elogind /var/service
 sudo ln -s /etc/sv/lxdm /var/service
 sudo sed -i 's/autologin/autologin=user/g' /etc/lxdm/lxdm.conf
+sudo echo "autologin=user" >> /etc/lxdm/lxdm.conf
+
 sudo reboot
 }
 
