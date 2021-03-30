@@ -48,7 +48,7 @@ sudo reboot;;
        clear && /bin/echo -e '\n\n' "\e[1;31mEXITING...\e[0m" && exit;;
 
     *)
-     printf '\n%s\n' 'Invalid option, try again' && sleep 1 && clear && RBT_N
+     printf '\n%s\n' 'Invalid option, try again' && sleep 1 && clear && REBOOT_CASE
 
 esac
 }
