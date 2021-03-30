@@ -1,1 +1,1 @@
-# base
+**bootstraping script and configs**
