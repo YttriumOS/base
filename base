@@ -6,7 +6,7 @@ set -o pipefail
 
 MAIN_PKGS() {
 sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
-sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin pavucontrol xorg-minimal xorg-fonts gvfs file-roller vim papirus-icon-theme arc-theme evince celluloid torbrowser-launcher lxdm
+sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin pavucontrol pulseaudio xorg-minimal xorg-fonts gvfs file-roller vim papirus-icon-theme arc-theme evince celluloid torbrowser-launcher lxdm
 }
 
 START_SERVICES(){
