@@ -10,8 +10,8 @@ sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin xo
 }
 
 SRT_SEV(){
-sudo sed -i 's/# session=/usr/bin/startlxde/session=/usr/bin/startxfce4/g' /etc/lxdm/lxdm.conf
-sudo sed -i 's/# autologin=dgod/autologin=user/g' /etc/lxdm/lxdm.conf
+sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf
+sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf
 sudo ln -s /etc/sv/dbus /var/service
 sudo ln -s /etc/sv/lxdm /var/service
 sudo ln -s /etc/sv/polkitd /var/service
