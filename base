@@ -1,15 +1,15 @@
 #!/bin/bash
 
-PI_FA(){
+PIPE_FAIL(){
 set -o pipefail
 }
 
-MAIN_PK() {
+MAIN_PKGS() {
 sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
 sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin xorg-minimal xorg-fonts gvfs file-roller vim papirus-icon-theme arc-theme evince celluloid torbrowser-launcher lxdm
 }
 
-SRT_SEV(){
+START_SERVICES(){
 sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf
 sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf
 sudo ln -s /etc/sv/dbus /var/service
@@ -17,12 +17,47 @@ sudo ln -s /etc/sv/lxdm /var/service
 sudo ln -s /etc/sv/polkitd /var/service
 sudo ln -s /etc/sv/rtkit /var/service
 sudo ln -s /etc/sv/elogind /var/service
+cp -r ENV/. /$HOME/
 
-sudo reboot
 }
+
+REBOOT_CASE() { 
+read -n 1 -p "
+Do you want to reboot now? [y/n]
+
+
+" ans;
+case $ans in
+
+    Y|y)
+
+clear && /bin/echo -e "\e[1;31mREBOOTING IN 5..\e[0m"
+sleep 1
+/bin/echo -e "\e[1;32m4..\e[0m"
+sleep 1
+/bin/echo -e "\e[1;32m3..\e[0m"
+sleep 1
+/bin/echo -e "\e[1;32m2..\e[0m"
+sleep 1
+/bin/echo -e "\e[1;32m1..\e[0m"
+sleep 1
+sudo reboot;;
+
+
+    n|N)
+       clear && /bin/echo -e '\n\n' "\e[1;31mEXITING...\e[0m" && exit;;
+
+    *)
+     printf '\n%s\n' 'Invalid option, try again' && sleep 1 && clear && RBT_N
+
+esac
+}
+
 
 #runfunctions
 
-PI_FA 
-MAIN_PK || MAIN_PK 
-SRT_SEV
+PIPE_FAIL
+MAIN_PKGS || MAIN_PKGS 
+START_SERVICES
+REBOOT_CASE
+
