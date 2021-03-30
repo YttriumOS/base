@@ -31,7 +31,7 @@ case $ans in
 
     Y|y)
 
-clear && /bin/echo -e "\e[1;31mREBOOTING IN 5..\e[0m"
+clear && /bin/echo -e '\n\n' "\e[1;31mREBOOTING IN 5..\e[0m"
 sleep 1
 /bin/echo -e "\e[1;32m4..\e[0m"
 sleep 1
