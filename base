@@ -15,41 +15,17 @@ sudo ln -s /etc/sv/lxdm /var/service
 sudo ln -s /etc/sv/polkitd /var/service
 sudo ln -s /etc/sv/rtkit /var/service
 sudo ln -s /etc/sv/elogind /var/service
+sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf
+sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf
 cp -r ENV/. /$HOME/
 }
 
 REBOOT_CASE() { 
-read -n 1 -p "
-Do you want to reboot now? [y/n]
-
-
-" ans;
-case $ans in
-
-    Y|y)
-
-clear && /bin/echo -e '\n\n' "\e[1;31mREBOOTING IN 5..\e[0m"
+clear && /bin/echo -e '\n\n' "\e[1;32mREBOOTING NOW......\e[0m"
 sleep 1
-/bin/echo -e "\e[1;32m4..\e[0m"
-sleep 1
-/bin/echo -e "\e[1;32m3..\e[0m"
-sleep 1
-/bin/echo -e "\e[1;32m2..\e[0m"
-sleep 1
-/bin/echo -e "\e[1;32m1..\e[0m"
-sleep 1
-sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf && sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf && sudo reboot;;
-
-
-    n|N)
-       clear && /bin/echo -e '\n\n' "\e[1;31mEXITING...\e[0m" && sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf && sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf && exit;;
-
-    *)
-     printf '\n%s\n' 'Invalid option, try again' && sleep 1 && clear && REBOOT_CASE
-
-esac
+clear && /bin/echo -e '\n\n' "\e[1;31mEXITING......\e[0m" 
+sudo reboot
 }
-
 
 #runfunctions
 
