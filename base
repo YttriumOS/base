@@ -6,7 +6,7 @@ set -o pipefail
 
 MAIN_PKGS() {
 sudo xbps-install -Syu -u xbps && sudo xbps-install -Syu
-sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin pavucontrol pulseaudio xorg-minimal xorg-fonts gvfs file-roller vim papirus-icon-theme arc-theme evince celluloid torbrowser-launcher lxdm
+sudo xbps-install -Syu xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin apparmor pavucontrol pulseaudio xorg-minimal xorg-fonts gvfs file-roller vim papirus-icon-theme arc-theme evince celluloid torbrowser-launcher lxdm
 }
 
 START_SERVICES(){
@@ -17,6 +17,8 @@ sudo ln -s /etc/sv/rtkit /var/service
 sudo ln -s /etc/sv/elogind /var/service
 sudo sed -i 's|# session=/usr/bin/startlxde|session=/usr/bin/startxfce4|g' /etc/lxdm/lxdm.conf
 sudo sed -i 's|# autologin=dgod|autologin=user|g' /etc/lxdm/lxdm.conf
+sudo sed -i 's|# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4"|GRUB_CMDLINE_LINUX_DEFAULT="apparmor=1 security=apparmor"|g' /etc/default/grub
+sudo update-grub
 cp -r ENV/. /$HOME/
 }
 
